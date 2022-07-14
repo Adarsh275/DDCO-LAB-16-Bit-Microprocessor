@@ -1,0 +1,95 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0xcbbd30 .scope module, "TB" "TB" 2 1;
+ .timescale 0 0;
+v0xce21e0_0 .var "ii", 0 3;
+v0xce2260_0 .var "s0", 0 0;
+v0xce2330_0 .var "s1", 0 0;
+v0xce23b0_0 .net "yy", 0 0, L_0xce3340; 1 drivers
+S_0xcbbaa0 .scope module, "newMUX" "mux4" 2 11, 3 6, S_0xcbbd30;
+ .timescale 0 0;
+v0xce1d90_0 .net "i", 0 3, v0xce21e0_0; 1 drivers
+v0xce1e10_0 .net "j0", 0 0, v0xce2260_0; 1 drivers
+v0xce1ec0_0 .net "j1", 0 0, v0xce2330_0; 1 drivers
+v0xce1f90_0 .alias "o", 0 0, v0xce23b0_0;
+v0xce2040_0 .net "t1", 0 0, L_0xce2770; 1 drivers
+v0xce2110_0 .net "t2", 0 0, L_0xce2d40; 1 drivers
+L_0xce2860 .part v0xce21e0_0, 3, 1;
+L_0xce29a0 .part v0xce21e0_0, 2, 1;
+L_0xce2e30 .part v0xce21e0_0, 1, 1;
+L_0xce2fb0 .part v0xce21e0_0, 0, 1;
+S_0xce1750 .scope module, "m1" "mux2" 3 8, 3 1, S_0xcbbaa0;
+ .timescale 0 0;
+v0xce1840_0 .net *"_s0", 1 0, L_0xce2480; 1 drivers
+v0xce18e0_0 .net *"_s3", 0 0, C4<0>; 1 drivers
+v0xce1980_0 .net *"_s4", 1 0, C4<00>; 1 drivers
+v0xce1a20_0 .net *"_s6", 0 0, L_0xce2630; 1 drivers
+v0xce1ad0_0 .net "i0", 0 0, L_0xce2860; 1 drivers
+v0xce1b70_0 .net "i1", 0 0, L_0xce29a0; 1 drivers
+v0xce1c10_0 .alias "j", 0 0, v0xce1ec0_0;
+v0xce1c90_0 .alias "o", 0 0, v0xce2040_0;
+L_0xce2480 .concat [ 1 1 0 0], v0xce2330_0, C4<0>;
+L_0xce2630 .cmp/eq 2, L_0xce2480, C4<00>;
+L_0xce2770 .functor MUXZ 1, L_0xce29a0, L_0xce2860, L_0xce2630, C4<>;
+S_0xce1130 .scope module, "m2" "mux2" 3 9, 3 1, S_0xcbbaa0;
+ .timescale 0 0;
+v0xce1220_0 .net *"_s0", 1 0, L_0xce2a90; 1 drivers
+v0xce12e0_0 .net *"_s3", 0 0, C4<0>; 1 drivers
+v0xce1380_0 .net *"_s4", 1 0, C4<00>; 1 drivers
+v0xce1420_0 .net *"_s6", 0 0, L_0xce2c00; 1 drivers
+v0xce14a0_0 .net "i0", 0 0, L_0xce2e30; 1 drivers
+v0xce1540_0 .net "i1", 0 0, L_0xce2fb0; 1 drivers
+v0xce15e0_0 .alias "j", 0 0, v0xce1ec0_0;
+v0xce1680_0 .alias "o", 0 0, v0xce2110_0;
+L_0xce2a90 .concat [ 1 1 0 0], v0xce2330_0, C4<0>;
+L_0xce2c00 .cmp/eq 2, L_0xce2a90, C4<00>;
+L_0xce2d40 .functor MUXZ 1, L_0xce2fb0, L_0xce2e30, L_0xce2c00, C4<>;
+S_0xcaa7d0 .scope module, "m3" "mux2" 3 10, 3 1, S_0xcbbaa0;
+ .timescale 0 0;
+v0xcaa170_0 .net *"_s0", 1 0, L_0xce3050; 1 drivers
+v0xce0c30_0 .net *"_s3", 0 0, C4<0>; 1 drivers
+v0xce0cd0_0 .net *"_s4", 1 0, C4<00>; 1 drivers
+v0xce0d70_0 .net *"_s6", 0 0, L_0xce3200; 1 drivers
+v0xce0e20_0 .alias "i0", 0 0, v0xce2040_0;
+v0xce0ec0_0 .alias "i1", 0 0, v0xce2110_0;
+v0xce0fa0_0 .alias "j", 0 0, v0xce1e10_0;
+v0xce1040_0 .alias "o", 0 0, v0xce23b0_0;
+L_0xce3050 .concat [ 1 1 0 0], v0xce2260_0, C4<0>;
+L_0xce3200 .cmp/eq 2, L_0xce3050, C4<00>;
+L_0xce3340 .functor MUXZ 1, L_0xce2d40, L_0xce2770, L_0xce3200, C4<>;
+    .scope S_0xcbbd30;
+T_0 ;
+    %vpi_call 2 8 "$dumpfile", "dump.vcd";
+    %vpi_call 2 9 "$dumpvars", 1'sb0, S_0xcbbd30;
+    %end;
+    .thread T_0;
+    .scope S_0xcbbd30;
+T_1 ;
+    %movi 8, 1, 4;
+    %set/v v0xce21e0_0, 8, 4;
+    %set/v v0xce2260_0, 0, 1;
+    %set/v v0xce2330_0, 0, 1;
+    %delay 5, 0;
+    %movi 8, 8, 4;
+    %set/v v0xce21e0_0, 8, 4;
+    %delay 5, 0;
+    %movi 8, 1, 4;
+    %set/v v0xce21e0_0, 8, 4;
+    %set/v v0xce2260_0, 1, 1;
+    %set/v v0xce2330_0, 1, 1;
+    %delay 5, 0;
+    %set/v v0xce21e0_0, 0, 4;
+    %set/v v0xce2260_0, 1, 1;
+    %set/v v0xce2330_0, 0, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testBench4to1.v";
+    "mux4to1.v";

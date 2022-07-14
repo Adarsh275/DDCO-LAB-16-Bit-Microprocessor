@@ -1,0 +1,220 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 10;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0xdfbdc0 .scope module, "tb" "tb" 2 4;
+ .timescale -9 -10;
+v0xe25c00_0 .var "cin", 0 0;
+v0xe25ca0_0 .var "clk", 0 0;
+v0xe25d40_0 .net "cout", 0 0, L_0xe28880; 1 drivers
+v0xe25e10_0 .var/i "i", 31 0;
+v0xe25e90_0 .var "i0", 3 0;
+v0xe25f10_0 .var "i1", 3 0;
+RS_0x7f2960a76828 .resolv tri, L_0xe26b20, L_0xe276b0, L_0xe28380, L_0xe28d50;
+v0xe25fd0_0 .net8 "o", 3 0, RS_0x7f2960a76828; 4 drivers
+v0xe26050_0 .var "reset", 0 0;
+v0xe26120 .array "test_vecs", 7 0, 8 0;
+S_0xdf98e0 .scope module, "u0" "fulladdR" 2 26, 3 6, S_0xdfbdc0;
+ .timescale 0 0;
+RS_0x7f2960a76798 .resolv tri, L_0xe26c60, L_0xe27750, L_0xe284b0, C4<zzz>;
+v0xe25860_0 .net8 "c", 2 0, RS_0x7f2960a76798; 3 drivers
+v0xe25920_0 .net "cin", 0 0, v0xe25c00_0; 1 drivers
+v0xe259a0_0 .alias "cout", 0 0, v0xe25d40_0;
+v0xe25a50_0 .net "i0", 0 3, v0xe25e90_0; 1 drivers
+v0xe25b00_0 .net "i1", 0 3, v0xe25f10_0; 1 drivers
+v0xe25b80_0 .alias "o", 0 3, v0xe25fd0_0;
+L_0xe268c0 .part v0xe25e90_0, 3, 1;
+L_0xe269f0 .part v0xe25f10_0, 3, 1;
+L_0xe26b20 .part/pv L_0xe26290, 3, 1, 4;
+L_0xe26c60 .part/pv L_0xe26810, 0, 1, 3;
+L_0xe27320 .part v0xe25e90_0, 2, 1;
+L_0xe27450 .part v0xe25f10_0, 2, 1;
+L_0xe27580 .part RS_0x7f2960a76798, 0, 1;
+L_0xe276b0 .part/pv L_0xe26db0, 2, 1, 4;
+L_0xe27750 .part/pv L_0xe27270, 1, 1, 3;
+L_0xe27de0 .part v0xe25e90_0, 1, 1;
+L_0xe28000 .part v0xe25f10_0, 1, 1;
+L_0xe281c0 .part RS_0x7f2960a76798, 1, 1;
+L_0xe28380 .part/pv L_0xe278a0, 1, 1, 4;
+L_0xe284b0 .part/pv L_0xe27d30, 2, 1, 3;
+L_0xe28930 .part v0xe25e90_0, 0, 1;
+L_0xe28a60 .part v0xe25f10_0, 0, 1;
+L_0xe28c20 .part RS_0x7f2960a76798, 2, 1;
+L_0xe28d50 .part/pv L_0xe285d0, 0, 1, 4;
+S_0xe250d0 .scope module, "f1" "full" 3 11, 3 1, S_0xdf98e0;
+ .timescale 0 0;
+L_0xe261a0 .functor XOR 1, L_0xe268c0, L_0xe269f0, C4<0>, C4<0>;
+L_0xe26290 .functor XOR 1, L_0xe261a0, v0xe25c00_0, C4<0>, C4<0>;
+L_0xe26530 .functor AND 1, L_0xe268c0, L_0xe26370, C4<1>, C4<1>;
+L_0xe26760 .functor AND 1, L_0xe26530, L_0xe26630, C4<1>, C4<1>;
+L_0xe26810 .functor AND 1, L_0xe26760, L_0xe268c0, C4<1>, C4<1>;
+v0xe251c0_0 .net *"_s0", 0 0, L_0xe261a0; 1 drivers
+v0xe25280_0 .net *"_s10", 0 0, L_0xe26760; 1 drivers
+v0xe25320_0 .net *"_s4", 0 0, L_0xe26370; 1 drivers
+v0xe253c0_0 .net *"_s6", 0 0, L_0xe26530; 1 drivers
+v0xe25440_0 .net *"_s8", 0 0, L_0xe26630; 1 drivers
+v0xe254e0_0 .net "a", 0 0, L_0xe268c0; 1 drivers
+v0xe25580_0 .net "b", 0 0, L_0xe269f0; 1 drivers
+v0xe25620_0 .alias "c", 0 0, v0xe25920_0;
+v0xe256c0_0 .net "carry", 0 0, L_0xe26810; 1 drivers
+v0xe25760_0 .net "sum", 0 0, L_0xe26290; 1 drivers
+L_0xe26370 .arith/sum 1, L_0xe269f0, L_0xe269f0;
+L_0xe26630 .arith/sum 1, v0xe25c00_0, v0xe25c00_0;
+S_0xe24940 .scope module, "f2" "full" 3 12, 3 1, S_0xdf98e0;
+ .timescale 0 0;
+L_0xe26d50 .functor XOR 1, L_0xe27320, L_0xe27450, C4<0>, C4<0>;
+L_0xe26db0 .functor XOR 1, L_0xe26d50, L_0xe27580, C4<0>, C4<0>;
+L_0xe26f80 .functor AND 1, L_0xe27320, L_0xe26e60, C4<1>, C4<1>;
+L_0xe27170 .functor AND 1, L_0xe26f80, L_0xe27080, C4<1>, C4<1>;
+L_0xe27270 .functor AND 1, L_0xe27170, L_0xe27320, C4<1>, C4<1>;
+v0xe24a30_0 .net *"_s0", 0 0, L_0xe26d50; 1 drivers
+v0xe24af0_0 .net *"_s10", 0 0, L_0xe27170; 1 drivers
+v0xe24b90_0 .net *"_s4", 0 0, L_0xe26e60; 1 drivers
+v0xe24c30_0 .net *"_s6", 0 0, L_0xe26f80; 1 drivers
+v0xe24cb0_0 .net *"_s8", 0 0, L_0xe27080; 1 drivers
+v0xe24d50_0 .net "a", 0 0, L_0xe27320; 1 drivers
+v0xe24df0_0 .net "b", 0 0, L_0xe27450; 1 drivers
+v0xe24e90_0 .net "c", 0 0, L_0xe27580; 1 drivers
+v0xe24f30_0 .net "carry", 0 0, L_0xe27270; 1 drivers
+v0xe24fd0_0 .net "sum", 0 0, L_0xe26db0; 1 drivers
+L_0xe26e60 .arith/sum 1, L_0xe27450, L_0xe27450;
+L_0xe27080 .arith/sum 1, L_0xe27580, L_0xe27580;
+S_0xe241b0 .scope module, "f3" "full" 3 13, 3 1, S_0xdf98e0;
+ .timescale 0 0;
+L_0xe27840 .functor XOR 1, L_0xe27de0, L_0xe28000, C4<0>, C4<0>;
+L_0xe278a0 .functor XOR 1, L_0xe27840, L_0xe281c0, C4<0>, C4<0>;
+L_0xe27a40 .functor AND 1, L_0xe27de0, L_0xe27950, C4<1>, C4<1>;
+L_0xe27c30 .functor AND 1, L_0xe27a40, L_0xe27b40, C4<1>, C4<1>;
+L_0xe27d30 .functor AND 1, L_0xe27c30, L_0xe27de0, C4<1>, C4<1>;
+v0xe242a0_0 .net *"_s0", 0 0, L_0xe27840; 1 drivers
+v0xe24360_0 .net *"_s10", 0 0, L_0xe27c30; 1 drivers
+v0xe24400_0 .net *"_s4", 0 0, L_0xe27950; 1 drivers
+v0xe244a0_0 .net *"_s6", 0 0, L_0xe27a40; 1 drivers
+v0xe24520_0 .net *"_s8", 0 0, L_0xe27b40; 1 drivers
+v0xe245c0_0 .net "a", 0 0, L_0xe27de0; 1 drivers
+v0xe24660_0 .net "b", 0 0, L_0xe28000; 1 drivers
+v0xe24700_0 .net "c", 0 0, L_0xe281c0; 1 drivers
+v0xe247a0_0 .net "carry", 0 0, L_0xe27d30; 1 drivers
+v0xe24840_0 .net "sum", 0 0, L_0xe278a0; 1 drivers
+L_0xe27950 .arith/sum 1, L_0xe28000, L_0xe28000;
+L_0xe27b40 .arith/sum 1, L_0xe281c0, L_0xe281c0;
+S_0xdf7450 .scope module, "f4" "full" 3 14, 3 1, S_0xdf98e0;
+ .timescale 0 0;
+L_0xe27fa0 .functor XOR 1, L_0xe28930, L_0xe28a60, C4<0>, C4<0>;
+L_0xe285d0 .functor XOR 1, L_0xe27fa0, L_0xe28c20, C4<0>, C4<0>;
+L_0xe286d0 .functor AND 1, L_0xe28930, L_0xe28630, C4<1>, C4<1>;
+L_0xe287d0 .functor AND 1, L_0xe286d0, L_0xe28730, C4<1>, C4<1>;
+L_0xe28880 .functor AND 1, L_0xe287d0, L_0xe28930, C4<1>, C4<1>;
+v0xdf95b0_0 .net *"_s0", 0 0, L_0xe27fa0; 1 drivers
+v0xe23b10_0 .net *"_s10", 0 0, L_0xe287d0; 1 drivers
+v0xe23bb0_0 .net *"_s4", 0 0, L_0xe28630; 1 drivers
+v0xe23c50_0 .net *"_s6", 0 0, L_0xe286d0; 1 drivers
+v0xe23d00_0 .net *"_s8", 0 0, L_0xe28730; 1 drivers
+v0xe23da0_0 .net "a", 0 0, L_0xe28930; 1 drivers
+v0xe23e80_0 .net "b", 0 0, L_0xe28a60; 1 drivers
+v0xe23f20_0 .net "c", 0 0, L_0xe28c20; 1 drivers
+v0xe24010_0 .alias "carry", 0 0, v0xe25d40_0;
+v0xe240b0_0 .net "sum", 0 0, L_0xe285d0; 1 drivers
+L_0xe28630 .arith/sum 1, L_0xe28a60, L_0xe28a60;
+L_0xe28730 .arith/sum 1, L_0xe28c20, L_0xe28c20;
+    .scope S_0xdfbdc0;
+T_0 ;
+    %vpi_call 2 10 "$dumpfile", "dump.vcd";
+    %vpi_call 2 11 "$dumpvars", 1'sb0, S_0xdfbdc0;
+    %end;
+    .thread T_0;
+    .scope S_0xdfbdc0;
+T_1 ;
+    %set/v v0xe26050_0, 1, 1;
+    %delay 125, 0;
+    %set/v v0xe26050_0, 0, 1;
+    %end;
+    .thread T_1;
+    .scope S_0xdfbdc0;
+T_2 ;
+    %set/v v0xe25ca0_0, 0, 1;
+    %end;
+    .thread T_2;
+    .scope S_0xdfbdc0;
+T_3 ;
+    %delay 50, 0;
+    %load/v 8, v0xe25ca0_0, 1;
+    %inv 8, 1;
+    %set/v v0xe25ca0_0, 8, 1;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_0xdfbdc0;
+T_4 ;
+    %movi 8, 2, 9;
+   %ix/load 1, 0, 0;
+   %ix/load 3, 0, 0;
+   %set/av v0xe26120, 8, 9;
+    %movi 8, 34, 9;
+   %ix/load 1, 0, 0;
+   %ix/load 3, 1, 0;
+   %set/av v0xe26120, 8, 9;
+    %movi 8, 226, 9;
+   %ix/load 1, 0, 0;
+   %ix/load 3, 2, 0;
+   %set/av v0xe26120, 8, 9;
+    %movi 8, 14, 9;
+   %ix/load 1, 0, 0;
+   %ix/load 3, 3, 0;
+   %set/av v0xe26120, 8, 9;
+    %movi 8, 207, 9;
+   %ix/load 1, 0, 0;
+   %ix/load 3, 4, 0;
+   %set/av v0xe26120, 8, 9;
+    %movi 8, 115, 9;
+   %ix/load 1, 0, 0;
+   %ix/load 3, 5, 0;
+   %set/av v0xe26120, 8, 9;
+    %movi 8, 483, 9;
+   %ix/load 1, 0, 0;
+   %ix/load 3, 6, 0;
+   %set/av v0xe26120, 8, 9;
+    %movi 8, 238, 9;
+   %ix/load 1, 0, 0;
+   %ix/load 3, 7, 0;
+   %set/av v0xe26120, 8, 9;
+    %end;
+    .thread T_4;
+    .scope S_0xdfbdc0;
+T_5 ;
+    %set/v v0xe25e10_0, 0, 32;
+    %set/v v0xe25c00_0, 0, 1;
+    %set/v v0xe25f10_0, 0, 4;
+    %set/v v0xe25e90_0, 0, 4;
+    %end;
+    .thread T_5;
+    .scope S_0xdfbdc0;
+T_6 ;
+    %delay 60, 0;
+    %set/v v0xe25e10_0, 0, 32;
+T_6.0 ;
+    %load/v 8, v0xe25e10_0, 32;
+   %cmpi/s 8, 8, 32;
+    %jmp/0xz T_6.1, 5;
+    %delay 100, 0;
+    %ix/getv/s 3, v0xe25e10_0;
+    %load/av 8, v0xe26120, 9;
+    %set/v v0xe25c00_0, 8, 1;
+    %set/v v0xe25f10_0, 9, 4;
+    %set/v v0xe25e90_0, 13, 4;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v0xe25e10_0, 32;
+    %set/v v0xe25e10_0, 8, 32;
+    %jmp T_6.0;
+T_6.1 ;
+    %delay 1000, 0;
+    %vpi_call 2 30 "$finish";
+    %end;
+    .thread T_6;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "dtestBench.v";
+    "ripple.v";
